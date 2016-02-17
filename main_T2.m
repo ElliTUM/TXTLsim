@@ -2,6 +2,10 @@
 % Daten laden
 load('testData7')
 data=data-140;
+data=smooth(data,5)';
+for i=1:30
+data(:,i)=[];
+end
 global bestparam besterr
 % c_0 Anfangsparameter festlegen
 c_0(1)=5; % DNA in nM
@@ -55,14 +59,19 @@ param(15)=5/240; % translation rate
 
 param(16)=1/90; %kfold2
 
+% param=[0.283569349425548 0.519568747824917 0.00331941503709697 0.000825192652206199 0.0344859540915462 0.0139527613302360 0.0265778426625039 0.00699999965010302 0.0128683835681360 0.0138850596569748 0.00166151616089664 0.00446000006871836 0.00186155191026500 0.000349890142322313 0.0105159305624588 0.106476930973575];
+errW=[1,10]; %error Weights [lsqE, fftE]
 
+cutFFT=7; 
 %besterr festlegen
 %totalError=0; %reset Error
 besterr=Inf;
 bestparam=param;
 
 % ode23s_solver aufrufen
-ode23s_solver_T2(param,c_0,data)
+ode23s_solver_T2(param,c_0,data,errW,cutFFT)
 
 % Fitfuntion aufrufen
-Fitfkt_T2(param,c_0,data)
+Fitfkt_T2(param,c_0,data,errW,cutFFT)
+
+
