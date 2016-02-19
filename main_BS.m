@@ -8,38 +8,38 @@ data(:,i)=[];
 end
 global bestparam besterr
 % c_0 Anfangsparameter festlegen
-c_0(1)=10; % DNA in nM
-c_0(2)=0; %DRp
-c_0(3)=30; %Rp in nM
-c_0(4)=0; % mRNA in nM
+c_0(1)=5; % TS1-DNA in nM
+c_0(2)=0; % DRp
+c_0(3)=30; %RNA-Polymerase Rp in nM
+c_0(4)=0; % TS1 in nM
 c_0(5)=200; % R in nM
-c_0(6)=0; % mRNAR in nM
-c_0(7)=0; % Punfold 
-c_0(8)=0; % P
-c_0(9)=4; % Xm
-c_0(10)=0; % mRNAXm
-c_0(11)=5; % DNA 2 in nM
+c_0(6)=0; % TS1R in nM
+c_0(7)=0; % Punfold T7-T3R5-Polymerase
+c_0(8)=0; % P T7-T3R5-Polymerase
+c_0(9)=4; % Xm RNA-Degradase
+c_0(10)=0; % TS1Xm
+c_0(11)=5; % Trigger1-DNA D2 in nM
 c_0(12)=0; %D2P
-c_0(13)=0; % m2 in nM
-c_0(14)=0; % m2Xm
-c_0(15)=0; % mRNAm2
-c_0(16)=0; % mRNAm2R
+c_0(13)=0; % Trigger1  in nM
+c_0(14)=0; % Tr1Xm
+c_0(15)=0; % TS1Tr1
+c_0(16)=0; % TS1Tr1R
 
-c_0(17)=5; % DNA in nM
+c_0(17)=10; % TS2-DNA in nM
 c_0(18)=0; % DRp
-c_0(19)=0; % mRNA in nM
-c_0(20)=0; % mRNAR in nM
+c_0(19)=0; % TS2 in nM
+c_0(20)=0; % TS2R in nM
 c_0(21)=0; % Punfold 
 c_0(22)=0; % P
-c_0(23)=0; % mRNAXm
-c_0(24)=3; % DNA 2 in nM
+c_0(23)=0; % TS2Xm
+c_0(24)=10; % Trigger2-DNA D2b in nM
 c_0(25)=0; % D2P
-c_0(26)=0; % m2 in nM
-c_0(27)=0; % m2Xm
-c_0(28)=0; % mRNAm2
-c_0(29)=0; % mRNAm2R
-c_0(30)=0; % mRNAm2b
-c_0(31)=0; % mRNAbm2
+c_0(26)=0; % Trigger2  in nM
+c_0(27)=0; % Tr2Xm
+c_0(28)=0; % TS2Tr2
+c_0(29)=0; % TS2Tr2R
+c_0(30)=0; % TS1Tr2
+c_0(31)=0; % TS2Tr1
 % Startparameter festlegen
 
 param(1)=3*10^-2; % RNAP->DNA /nM /s
@@ -48,7 +48,7 @@ param(2)=5; % RD-> R + D \s Source: Belintsev et al., NRA, 1980
 
 param(3)=1/900; % kcat /s Source: Karzbrun et al. PRL, 2011
 
-param(4)=(1/200)*2.6*10^-3; % /nM/s  leaky binding rate of R
+param(4)=(1/100)*2.6*10^-3; % /nM/s  leaky binding rate of R
 
 param(5)=0.015; %diss rate of R
 
@@ -90,15 +90,15 @@ param(23)=10^-8; %Hybridisierungsrate /nM/s
 
 param(24)=10^-5; %Dissoziationsrate TS1Tr1 geraten
 
-param(25)=10^-1; %Hybridisierungsrate /nM/s 
+param(25)=10^-3; %Hybridisierungsrate /nM/s 
 
 param(26)=10^-5; %Dissoziationsrate TS1Tr1 geraten
 
-param(27)=10^-6; %Hybridisierungsrate /nM/s
+param(27)=10^-3; %Hybridisierungsrate /nM/s
 
-param(28)=10^-4; %Dissoziationsrate TS1Tr1 geraten
+param(28)=10^-5; %Dissoziationsrate TS1Tr1 geraten
 
-param(29)=10^-1; %Hybridisierungsrate /nM/s 
+param(29)=10^-3; %Hybridisierungsrate /nM/s 
 
 param(30)=10^-5; %Dissoziationsrate TS1Tr1 geraten
 
