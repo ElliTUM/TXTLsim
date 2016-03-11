@@ -30,14 +30,38 @@ c_0(19)=0; % TrXm in nM
 c_0(20)=0; % AntiTrXm in nM
 c_0(21)=0; % TrAntiTr
 
+
+% Lac-Repressor
+R=2490; %Lac-Repressor-Konzentration in nM in DH5alpha Z1
+I=1*10^6; % IPTG-Konzentration in nM
+KAR=0.1; %Dissoziationsrate Repressor/DNA-Bindestelle in nM
+KRI=1000; %Dissoziationsrate Repressor/Inducer in nM
+n1=2; % Hill-Koeffizient 
+% Tet-Repressor
+R2=5810; % tet-Repressor-Konzentration in nM in DH5alpha Z1
+I2=216*10^3; % aTc-Konzentration 100ng/ml
+KAR2=0.1; %Dissoziationsrate Repressor/DNA-Bindestelle
+KRI2=1000; %Dissoziationsrate Repressor/Inducer
+n2=2; % Hill-Koeffizient
+
+% IPTG und aTc modifizieren die Transkriptionsraten k2b und k2c
+
+k2=1/73;
+k2b=k2*1/(1+(R/KAR*(1/(1+(I/KRI)^n1))));
+
+k2c=k2*1/(1+(R2/KAR2*(1/(1+(I2/KRI2)^n2))));
+
+
 % Startparameter festlegen
 param(1)=3*10^-2; % RNAP->DNA /nM /s
 param(2)=5; % RD-> R + D \s Source: Belintsev et al., NRA, 1980
-param(3)=1/900; % kcat /s Source: Karzbrun et al. PRL, 2011
+param(3)=1/800; % kcat /s Source: Karzbrun et al. PRL, 2011
 param(4)=3*10^-2; % RNAP->DNA (Trigger-DNA) /nM /s
-param(5)=1/900; % kcat /s Source: Karzbrun et al. PRL, 2011
+% param(5)=1/900; % kcat /s Source: Karzbrun et al. PRL, 2011
+param(5)=k2b;
 param(6)=3*10^-2; % RNAP->DNA (Anti-Trigger-DNA) /nM /s
-param(7)=1/900; % kcat /s Source: Karzbrun et al. PRL, 2011
+% param(7)=1/900; % kcat /s Source: Karzbrun et al. PRL, 2011
+param(7)=k2c;
 param(8)=(1/100)*2.6*10^-3; % /nM/s  leaky binding rate of R
 param(9)=0.015; %diss rate of R
 param(10)=5/883; %translation rate
