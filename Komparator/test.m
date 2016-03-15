@@ -1,14 +1,15 @@
-function plot3Dprofil
+function plot3Dprofil;
 
-IPTG=[0:50000:600000];
-aTc=[0:50000:600000];
+IPTG=[0:50000:300000];
+aTc=[0:50000:300000];
 
 for i=1:length(IPTG)
     for j=1:length(aTc)
     I=IPTG(i);
     I2=aTc(j);
-   main_Komp_2(I,I2);
-   mCer(i,j)= ans(14);
+   [totalError,simData14]=main_Komp_2(I,I2);
+   a=length(simData14);
+   mCer(i,j)= simData14(a);
     end
   
 end
